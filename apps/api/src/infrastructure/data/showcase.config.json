@@ -1,0 +1,107 @@
+﻿[
+  {
+    "repoName": "Projeto-Carrinho-Shoppe-Backend",
+    "displayName": "Shoppe Cart Backend API",
+    "customDescription": "Microsserviço de carrinho de compras de alta performance com Clean Architecture, validação Zod, regras de negócio isoladas e persistência desacoplada.",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&auto=format&fit=crop&q=80",
+    "category": "backend",
+    "isPinned": true,
+    "architecture": [
+      {
+        "title": "Clean Architecture & SOLID",
+        "description": "Camadas estritamente separadas de Domain (Entidades/Regras de cálculo de frete e cupons), Application (Use Cases) e Infrastructure (Controllers HTTP)."
+      },
+      {
+        "title": "Idempotência & Resiliência",
+        "description": "Garantia de que requisições repetidas de checkout e atualização de itens não causem duplicação de saldo ou estoque."
+      }
+    ],
+    "challenges": [
+      "Cálculo atômico de descontos progressivos e cupons por item sem concorrência",
+      "Modelagem desacoplada com injeção de dependências em TypeScript nativo"
+    ]
+  },
+  {
+    "repoName": "Fila-Inteligente-Para-Cozinha",
+    "displayName": "Fila Inteligente Para Cozinha (KDS)",
+    "customDescription": "Sistema de despacho e orquestração de pedidos em tempo real para cozinhas industriais e restaurantes com algoritmo de priorização dinâmica FIFO/SLA.",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop&q=80",
+    "category": "backend",
+    "isPinned": true,
+    "architecture": [
+      {
+        "title": "Event-Driven & WebSockets",
+        "description": "Notificações instantâneas aos painéis de preparo de pratos conforme o status de cocção avança."
+      },
+      {
+        "title": "SLA Engine",
+        "description": "Repriorização automática de comandas com base no tempo de espera do cliente e complexidade do prato."
+      }
+    ],
+    "challenges": [
+      "Evitar starvation de pedidos complexos através de algoritmo de priorização dinâmica",
+      "Garantia de entrega de eventos mesmo com oscilação na rede local da cozinha"
+    ]
+  },
+  {
+    "repoName": "Formula1-MinimalAPI",
+    "displayName": "F1 Telemetry & Minimal API",
+    "customDescription": "API ultraleve e de baixíssima latência para consulta de telemetria, pilotos, construtores e tempos de volta da Fórmula 1 com cache inteligente.",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800&auto=format&fit=crop&q=80",
+    "category": "api",
+    "isPinned": true,
+    "architecture": [
+      {
+        "title": "Zero-Overhead Endpoints",
+        "description": "Minimal API focada em latência inferior a 10ms utilizando fast serialization."
+      },
+      {
+        "title": "Multi-tier Cache",
+        "description": "Cache em memória para resultados de corridas históricas imutáveis e cache com TTL curto para sessões ao vivo."
+      }
+    ],
+    "challenges": [
+      "Otimização de serialização JSON para grandes volumes de dados de voltas e parciais",
+      "Controle fino de cabeçalhos HTTP ETag e Cache-Control"
+    ]
+  },
+  {
+    "repoName": "Dashboard-Financeiro",
+    "displayName": "FinTrack - Analytics Financeiro",
+    "customDescription": "Plataforma de inteligência financeira pessoal e corporativa com agregação de despesas por centro de custo, previsão de fluxo de caixa e visualização em tempo real.",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
+    "category": "fullstack",
+    "isPinned": true,
+    "architecture": [
+      {
+        "title": "Data Aggregation Pipelines",
+        "description": "Processamento e sumarização de extratos bancários com categorização automática."
+      },
+      {
+        "title": "Reactive UI Charts",
+        "description": "Gráficos reativos interativos com drill-down por período e categoria."
+      }
+    ],
+    "challenges": [
+      "Consistência de casas decimais e precisão monetária em cálculos de juros compostos",
+      "Segurança e mascaramento de dados sensíveis de transações"
+    ]
+  },
+  {
+    "repoName": "Gerenciador-de-podcasts",
+    "displayName": "Podcast Stream & RSS Hub",
+    "customDescription": "Hub de agregação e streaming de podcasts com parser de feeds RSS XML assíncrono e extração de metadados em segundo plano.",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=800&auto=format&fit=crop&q=80",
+    "category": "backend",
+    "isPinned": false,
+    "architecture": [
+      {
+        "title": "Async Stream Processing",
+        "description": "Streaming de áudio com suporte a range requests HTTP 206 (play/pause instantâneo)."
+      }
+    ],
+    "challenges": [
+      "Tratamento resiliente de feeds RSS malformados de diferentes plataformas"
+    ]
+  }
+]

@@ -1,0 +1,24 @@
+﻿{
+    "name":  "@portfolio/api",
+    "version":  "1.0.0",
+    "private":  true,
+    "type":  "module",
+    "main":  "./dist/infrastructure/http/server.js",
+    "scripts":  {
+                    "build":  "tsc \u0026\u0026 node -e \"const fs = require(\u0027fs\u0027); fs.mkdirSync(\u0027dist/infrastructure/data\u0027, {recursive: true}); fs.copyFileSync(\u0027src/infrastructure/data/showcase.config.json\u0027, \u0027dist/infrastructure/data/showcase.config.json\u0027)\"",
+                    "dev":  "tsx watch src/infrastructure/http/server.ts",
+                    "start":  "node dist/infrastructure/http/server.js"
+                },
+    "dependencies":  {
+                         "@fastify/cors":  "^10.0.2",
+                         "@portfolio/shared":  "*",
+                         "dotenv":  "^16.4.7",
+                         "fastify":  "^5.2.1",
+                         "zod":  "^3.24.2"
+                     },
+    "devDependencies":  {
+                            "@types/node":  "^22.13.4",
+                            "tsx":  "^4.19.2",
+                            "typescript":  "^5.7.3"
+                        }
+}
