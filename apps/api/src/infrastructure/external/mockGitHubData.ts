@@ -1,4 +1,4 @@
-﻿import { RawGitHubRepo, RawGitHubUser } from '../../domain/repositories/IGitHubGateway.js';
+import { RawGitHubRepo, RawGitHubUser } from '../../domain/repositories/IGitHubGateway.js';
 
 export const mockGitHubUser: RawGitHubUser = {
   login: 'ViktorGabriel',

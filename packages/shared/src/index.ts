@@ -1,4 +1,4 @@
-﻿import { z } from 'zod';
+import { z } from 'zod';
 
 export const ProfileSchema = z.object({
   username: z.string(),
@@ -42,6 +42,13 @@ export const ArchitectureHighlightSchema = z.object({
 
 export type ArchitectureHighlight = z.infer<typeof ArchitectureHighlightSchema>;
 
+export const ExecutiveSpecSchema = z.object({
+  problem: z.string(),
+  archHighlight: z.string()
+});
+
+export type ExecutiveSpec = z.infer<typeof ExecutiveSpecSchema>;
+
 export const ProjectSchema = z.object({
   id: z.string(),
   name: z.string(),
@@ -52,13 +59,17 @@ export const ProjectSchema = z.object({
   metrics: ProjectMetricSchema.default({}),
   githubUrl: z.string().url(),
   homepageUrl: z.string().url().nullable().optional(),
-  thumbnailUrl: z.string(),
+  thumbnailUrl: z.string().optional(),
   topics: z.array(z.string()).default([]),
-  category: z.enum(['backend', 'fullstack', 'frontend', 'mobile', 'api']).default('backend'),
+  category: z.enum(['backend', 'fullstack', 'frontend', 'mobile', 'api', 'utilities']).default('backend'),
   isPinned: z.boolean().default(false),
   architecture: z.array(ArchitectureHighlightSchema).default([]),
   challenges: z.array(z.string()).default([]),
-  updatedAt: z.string()
+  updatedAt: z.string(),
+  executiveSpec: ExecutiveSpecSchema.optional(),
+  codeSnippet: z.string().optional(),
+  techSpecs: z.array(z.string()).optional(),
+  verifiedViaReadme: z.boolean().default(false)
 });
 
 export type Project = z.infer<typeof ProjectSchema>;

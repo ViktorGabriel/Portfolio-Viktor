@@ -1,4 +1,4 @@
-﻿import { ICacheService } from '../../domain/repositories/ICacheService.js';
+import { ICacheService } from '../../domain/repositories/ICacheService.js';
 
 interface CacheEntry<T> {
   data: T;

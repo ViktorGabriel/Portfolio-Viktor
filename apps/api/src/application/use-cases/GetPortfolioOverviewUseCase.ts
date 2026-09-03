@@ -1,4 +1,4 @@
-﻿import {
+import {
   PortfolioOverviewResponse,
   Project,
   LanguageStat
@@ -131,6 +131,10 @@ export class GetPortfolioOverviewUseCase {
       challenges: showcase?.challenges || [
         'Organização de código limpo e padrões de projeto sustentáveis.'
       ],
+      executiveSpec: showcase?.executiveSpec,
+      codeSnippet: showcase?.codeSnippet,
+      techSpecs: showcase?.techSpecs,
+      verifiedViaReadme: showcase?.verifiedViaReadme ?? false,
       updatedAt: repo.updated_at
     };
   }
@@ -144,22 +148,23 @@ export class GetPortfolioOverviewUseCase {
       name: showcase.repoName,
       displayName: showcase.displayName,
       description: showcase.customDescription || 'Projeto em destaque do portfólio.',
-      primaryLanguage: 'TypeScript',
-      languageColor: LANGUAGE_COLORS['TypeScript'],
-      metrics: {
-        stars: 12,
-        forks: 2,
-        openIssues: 0,
-        watchers: 12
-      },
-      githubUrl: `https://github.com/${username}/${showcase.repoName}`,
+      primaryLanguage: showcase.primaryLanguage || 'TypeScript',
+      languageColor: showcase.languageColor || LANGUAGE_COLORS['TypeScript'],
+      metrics: showcase.metrics 
+        ? { stars: showcase.metrics.stars, forks: showcase.metrics.forks, openIssues: 0, watchers: 0 }
+        : { stars: 12, forks: 2, openIssues: 0, watchers: 12 },
+      githubUrl: showcase.githubUrl || `https://github.com/${username}/${showcase.repoName}`,
       homepageUrl: null,
-      thumbnailUrl: showcase.thumbnailUrl,
-      topics: ['clean-architecture', 'typescript', 'backend'],
+      thumbnailUrl: showcase.thumbnailUrl || 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop&q=80',
+      topics: showcase.topics || ['clean-architecture', 'typescript', 'backend'],
       category: showcase.category,
       isPinned: showcase.isPinned,
-      architecture: showcase.architecture,
-      challenges: showcase.challenges,
+      architecture: showcase.architecture || [],
+      challenges: showcase.challenges || [],
+      executiveSpec: showcase.executiveSpec,
+      codeSnippet: showcase.codeSnippet,
+      techSpecs: showcase.techSpecs,
+      verifiedViaReadme: showcase.verifiedViaReadme ?? false,
       updatedAt: new Date().toISOString()
     };
   }

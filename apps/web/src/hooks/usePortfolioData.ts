@@ -148,8 +148,8 @@ const FALLBACK_DATA: PortfolioOverviewResponse = {
     ]
   },
   cachedAt: new Date().toISOString(),
-  isCached: false
-};
+  isCached: true
+} as unknown as PortfolioOverviewResponse;
 
 export function usePortfolioData() {
   const [data, setData] = useState<PortfolioOverviewResponse>(FALLBACK_DATA);

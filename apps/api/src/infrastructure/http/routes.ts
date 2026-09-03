@@ -1,4 +1,4 @@
-﻿import { FastifyInstance, FastifyPluginAsync } from 'fastify';
+import { FastifyInstance, FastifyPluginAsync } from 'fastify';
 import { GetPortfolioOverviewUseCase } from '../../application/use-cases/GetPortfolioOverviewUseCase.js';
 import { ICacheService } from '../../domain/repositories/ICacheService.js';
 

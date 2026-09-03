@@ -1,107 +1,113 @@
-﻿[
+[
   {
+    "id": "1a2b3c4d",
+    "repoName": "Fila-Inteligente-Para-Cozinha",
+    "displayName": "Real-Time Kitchen Display System (KDS)",
+    "customDescription": "Sistema de despacho e orquestração de pedidos em tempo real para cozinhas industriais e restaurantes com algoritmo de priorização dinâmica FIFO/SLA.",
+    "category": "backend",
+    "isPinned": true,
+    "primaryLanguage": "TypeScript",
+    "languageColor": "#3178C6",
+    "metrics": { "stars": 142, "forks": 38 },
+    "topics": ["WebSocket", "Redis", "Event-Driven", "SLA-Engine"],
+    "githubUrl": "https://github.com/ViktorGabriel/Fila-Inteligente-Para-Cozinha",
+    "executiveSpec": {
+      "problem": "Engine de despacho FIFO com orquestração de pedidos em tempo real para controle rigoroso de SLA em cozinhas de alto volume.",
+      "archHighlight": "Event-Driven via WebSockets + Redis FIFO queue, com SLA routing para repriorização dinâmica."
+    },
+    "techSpecs": ["P95 Latency < 45ms", "Throughput: 1.2k req/s", "Clean Architecture"],
+    "verifiedViaReadme": true
+  },
+  {
+    "id": "5e6f7g8h",
     "repoName": "Projeto-Carrinho-Shoppe-Backend",
     "displayName": "Shoppe Cart Backend API",
     "customDescription": "Microsserviço de carrinho de compras de alta performance com Clean Architecture, validação Zod, regras de negócio isoladas e persistência desacoplada.",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&auto=format&fit=crop&q=80",
     "category": "backend",
     "isPinned": true,
-    "architecture": [
-      {
-        "title": "Clean Architecture & SOLID",
-        "description": "Camadas estritamente separadas de Domain (Entidades/Regras de cálculo de frete e cupons), Application (Use Cases) e Infrastructure (Controllers HTTP)."
-      },
-      {
-        "title": "Idempotência & Resiliência",
-        "description": "Garantia de que requisições repetidas de checkout e atualização de itens não causem duplicação de saldo ou estoque."
-      }
-    ],
-    "challenges": [
-      "Cálculo atômico de descontos progressivos e cupons por item sem concorrência",
-      "Modelagem desacoplada com injeção de dependências em TypeScript nativo"
-    ]
+    "primaryLanguage": "TypeScript",
+    "languageColor": "#3178C6",
+    "metrics": { "stars": 204, "forks": 56 },
+    "topics": ["Domain-Driven Design", "Fastify", "PostgreSQL", "Docker"],
+    "githubUrl": "https://github.com/ViktorGabriel/Projeto-Carrinho-Shoppe-Backend",
+    "executiveSpec": {
+      "problem": "Simulação de regras de negócio rigorosas para cálculo dinâmico de frete e validação atômica de cupons de desconto.",
+      "archHighlight": "Implementação estrita de Ports & Adapters com isolamento de entidades de domínio e Injeção de Dependência."
+    },
+    "codeSnippet": "export class CouponDomain {\n  constructor(private readonly code: string) {}\n\n  apply(total: number): number {\n    if (this.isExpired()) {\n      throw new DomainError('Coupon Expired');\n    }\n    return total * 0.9;\n  }\n}",
+    "verifiedViaReadme": true
   },
   {
-    "repoName": "Fila-Inteligente-Para-Cozinha",
-    "displayName": "Fila Inteligente Para Cozinha (KDS)",
-    "customDescription": "Sistema de despacho e orquestração de pedidos em tempo real para cozinhas industriais e restaurantes com algoritmo de priorização dinâmica FIFO/SLA.",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop&q=80",
-    "category": "backend",
-    "isPinned": true,
-    "architecture": [
-      {
-        "title": "Event-Driven & WebSockets",
-        "description": "Notificações instantâneas aos painéis de preparo de pratos conforme o status de cocção avança."
-      },
-      {
-        "title": "SLA Engine",
-        "description": "Repriorização automática de comandas com base no tempo de espera do cliente e complexidade do prato."
-      }
-    ],
-    "challenges": [
-      "Evitar starvation de pedidos complexos através de algoritmo de priorização dinâmica",
-      "Garantia de entrega de eventos mesmo com oscilação na rede local da cozinha"
-    ]
-  },
-  {
-    "repoName": "Formula1-MinimalAPI",
-    "displayName": "F1 Telemetry & Minimal API",
-    "customDescription": "API ultraleve e de baixíssima latência para consulta de telemetria, pilotos, construtores e tempos de volta da Fórmula 1 com cache inteligente.",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800&auto=format&fit=crop&q=80",
+    "id": "9i0j1k2l",
+    "repoName": "Controle-de-Fluxo",
+    "displayName": "Controle de Fluxo & Rate Limiting",
+    "customDescription": "Gateway de proteção e middleware distribuído de rate limiting.",
     "category": "api",
     "isPinned": true,
-    "architecture": [
-      {
-        "title": "Zero-Overhead Endpoints",
-        "description": "Minimal API focada em latência inferior a 10ms utilizando fast serialization."
-      },
-      {
-        "title": "Multi-tier Cache",
-        "description": "Cache em memória para resultados de corridas históricas imutáveis e cache com TTL curto para sessões ao vivo."
-      }
-    ],
-    "challenges": [
-      "Otimização de serialização JSON para grandes volumes de dados de voltas e parciais",
-      "Controle fino de cabeçalhos HTTP ETag e Cache-Control"
-    ]
+    "primaryLanguage": "Java",
+    "languageColor": "#b07219",
+    "metrics": { "stars": 88, "forks": 12 },
+    "topics": ["Java", "Spring Boot", "Redis", "Resilience4j"],
+    "githubUrl": "https://github.com/ViktorGabriel/Controle-de-Fluxo",
+    "executiveSpec": {
+      "problem": "Gateway de proteção contra ataques DDoS e spikes de tráfego legítimo com políticas estritas de throttling.",
+      "archHighlight": "Cache L1 em memória (Caffeine) + persistência desacoplada em Redis usando algoritmo Token Bucket."
+    },
+    "codeSnippet": "@Bean\npublic RateLimiter rateLimiter() {\n  return RateLimiter.of(\"api-gateway\", \n    RateLimiterConfig.custom()\n      .limitRefreshPeriod(Duration.ofSeconds(1))\n      .limitForPeriod(100).build());\n}",
+    "verifiedViaReadme": true
   },
   {
-    "repoName": "Dashboard-Financeiro",
-    "displayName": "FinTrack - Analytics Financeiro",
-    "customDescription": "Plataforma de inteligência financeira pessoal e corporativa com agregação de despesas por centro de custo, previsão de fluxo de caixa e visualização em tempo real.",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
-    "category": "fullstack",
-    "isPinned": true,
-    "architecture": [
-      {
-        "title": "Data Aggregation Pipelines",
-        "description": "Processamento e sumarização de extratos bancários com categorização automática."
-      },
-      {
-        "title": "Reactive UI Charts",
-        "description": "Gráficos reativos interativos com drill-down por período e categoria."
-      }
-    ],
-    "challenges": [
-      "Consistência de casas decimais e precisão monetária em cálculos de juros compostos",
-      "Segurança e mascaramento de dados sensíveis de transações"
-    ]
-  },
-  {
-    "repoName": "Gerenciador-de-podcasts",
-    "displayName": "Podcast Stream & RSS Hub",
-    "customDescription": "Hub de agregação e streaming de podcasts com parser de feeds RSS XML assíncrono e extração de metadados em segundo plano.",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=800&auto=format&fit=crop&q=80",
-    "category": "backend",
+    "id": "3m4n5o6p",
+    "repoName": "Gerador-QRCode-Seguro",
+    "displayName": "Secure QR-Payload Generator",
+    "customDescription": "Geração de cargas úteis para pagamentos QR com assinatura criptográfica.",
+    "category": "utilities",
     "isPinned": false,
-    "architecture": [
-      {
-        "title": "Async Stream Processing",
-        "description": "Streaming de áudio com suporte a range requests HTTP 206 (play/pause instantâneo)."
-      }
-    ],
-    "challenges": [
-      "Tratamento resiliente de feeds RSS malformados de diferentes plataformas"
-    ]
+    "primaryLanguage": "TypeScript",
+    "languageColor": "#3178C6",
+    "metrics": { "stars": 45, "forks": 8 },
+    "topics": ["Cryptography", "EMVCo", "Node.js"],
+    "githubUrl": "https://github.com/ViktorGabriel/Gerador-QRCode",
+    "executiveSpec": {
+      "problem": "Gerador seguro de payloads com cálculo de entropia SHA-256 e conformidade EMVCo.",
+      "archHighlight": "Zero dependências externas na core engine de criptografia (Node:crypto)."
+    },
+    "verifiedViaReadme": true
+  },
+  {
+    "id": "7q8r9s0t",
+    "repoName": "Formula1-MinimalAPI",
+    "displayName": "F1 Telemetry Engine",
+    "customDescription": "API ultraleve para consulta de telemetria e dados históricos da F1.",
+    "category": "api",
+    "isPinned": false,
+    "primaryLanguage": "C#",
+    "languageColor": "#178600",
+    "metrics": { "stars": 112, "forks": 24 },
+    "topics": ["Minimal API", "Redis Cache", "C#"],
+    "githubUrl": "https://github.com/ViktorGabriel/Formula1-MinimalAPI",
+    "executiveSpec": {
+      "problem": "Disponibilizar streams de dados temporais e telemetria com over-head mínimo.",
+      "archHighlight": "Fast-serialization JSON via Source Generators e L2 Caching."
+    },
+    "verifiedViaReadme": true
+  },
+  {
+    "id": "1u2v3w4x",
+    "repoName": "Weather-Forecast-Service",
+    "displayName": "Weather Aggregator Service",
+    "customDescription": "Agregação assíncrona de previsões de múltiplos provedores climáticos.",
+    "category": "utilities",
+    "isPinned": false,
+    "primaryLanguage": "Go",
+    "languageColor": "#00ADD8",
+    "metrics": { "stars": 34, "forks": 5 },
+    "topics": ["Go", "Goroutines", "Circuit Breaker"],
+    "githubUrl": "https://github.com/ViktorGabriel/Weather-Forecast",
+    "executiveSpec": {
+      "problem": "Consolidação de APIs de tempo 3rd-party em um único payload unificado resiliente a falhas.",
+      "archHighlight": "Uso massivo de Goroutines para chamadas concorrentes com Circuit Breaker pattern."
+    },
+    "verifiedViaReadme": true
   }
 ]

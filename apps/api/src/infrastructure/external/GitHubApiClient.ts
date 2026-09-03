@@ -1,4 +1,4 @@
-﻿import { Profile } from '@portfolio/shared';
+import { Profile } from '@portfolio/shared';
 import { IGitHubGateway, RawGitHubRepo, RawGitHubUser } from '../../domain/repositories/IGitHubGateway.js';
 import { mockGitHubRepos, mockGitHubUser } from './mockGitHubData.js';
 

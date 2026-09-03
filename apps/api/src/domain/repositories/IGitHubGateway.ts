@@ -1,4 +1,4 @@
-﻿import { Profile, Project } from '@portfolio/shared';
+import { Profile, Project } from '@portfolio/shared';
 
 export interface RawGitHubRepo {
   id: number;
