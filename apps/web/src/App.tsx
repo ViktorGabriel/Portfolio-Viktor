@@ -13,10 +13,11 @@ import { TechnicalDossier } from './components/about/TechnicalDossier';
 import { usePortfolioData } from './hooks/usePortfolioData';
 import { Project } from '@portfolio/shared';
 import { Radio, Github } from 'lucide-react';
-
+import { useI18n } from './locales/i18n';
 export const App: React.FC = () => {
   const { data } = usePortfolioData();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const { t } = useI18n();
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -63,7 +64,7 @@ export const App: React.FC = () => {
           <div className="flex items-center space-x-3 mb-5">
             <div className="w-px h-6 bg-[#FF00FF]" />
             <h2 className="font-display text-xs tracking-[0.4em] text-[#FF00FF] uppercase">
-              // SYSTEM ARCHITECTURE INSPECTOR
+              {t('app.archTitle')}
             </h2>
             <div className="flex-1 h-px bg-gradient-to-r from-[#FF00FF22] to-transparent" />
           </div>
@@ -75,7 +76,7 @@ export const App: React.FC = () => {
           <div className="flex items-center space-x-3 mb-5">
             <div className="w-px h-6 bg-[#FFD700]" />
             <h2 className="font-display text-xs tracking-[0.4em] text-[#FFD700] uppercase">
-              // CLI CONSOLE INTERFACE
+              {t('app.cliTitle')}
             </h2>
             <div className="flex-1 h-px bg-gradient-to-r from-[#FFD70022] to-transparent" />
           </div>
@@ -89,15 +90,15 @@ export const App: React.FC = () => {
             <div className="flex items-center space-x-3">
               <div className="w-px h-6 bg-[#00FFFF]" />
               <h2 className="font-display text-xs tracking-[0.4em] text-[#00FFFF] uppercase">
-                // ENGINEERING BLUEPRINTS
+                {t('app.blueprintsTitle')}
               </h2>
               <div className="flex-1 h-px bg-gradient-to-r from-[#00FFFF22] to-transparent" />
             </div>
             <h3 className="font-display text-2xl sm:text-3xl font-bold text-ink-hi tracking-tight mt-2">
-              System Architecture &amp; Solutions
+              {t('app.blueprintsSubtitle')}
             </h3>
             <p className="font-body text-sm text-ink-mid max-w-2xl leading-relaxed">
-              Produção focada em microsserviços de alto throughput, pipelines dirigidos a eventos e APIs distribuídas.
+              {t('app.blueprintsDesc')}
             </p>
           </div>
 
@@ -136,15 +137,15 @@ export const App: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-sm glass font-mono text-[11px] tracking-widest text-[#00FFFF]">
             <Radio className="w-3.5 h-3.5 animate-pulse-slow" />
-            <span>COMMUNICATION CHANNEL OPEN</span>
+            <span>{t('app.footerChannel')}</span>
           </div>
 
           <h2 className="font-display text-3xl font-bold text-ink-hi tracking-tight">
-            Pronto para Construir Soluções de Alto Impacto?
+            {t('app.footerTitle')}
           </h2>
 
           <p className="font-body text-sm text-ink-mid max-w-lg mx-auto leading-relaxed">
-            Disponível para posições de engenharia de software, arquitetura de backend e projetos com foco em alta performance.
+            {t('app.footerDesc')}
           </p>
 
           <div className="flex flex-wrap justify-center gap-3">
@@ -187,7 +188,7 @@ export const App: React.FC = () => {
           </div>
 
           <p className="font-mono text-[11px] text-ink-lo pt-6 border-t border-white/[0.04]">
-            © {new Date().getFullYear()} Viktor Gabriel • Clean Architecture • SOLID • Distributed Systems
+            {t('app.footerCopyright', { year: new Date().getFullYear().toString() })}
           </p>
         </div>
       </footer>

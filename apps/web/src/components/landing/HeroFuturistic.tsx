@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Layers, ShieldCheck, Zap, Cpu, Database, Server, ArrowRight } from 'lucide-react';
 import { Profile } from '@portfolio/shared';
+import { useI18n } from '../../locales/i18n';
 
 interface SkillNode {
   id: string;
@@ -91,6 +92,7 @@ export const HeroFuturistic: React.FC<HeroFuturisticProps> = ({
   const [activeNode, setActiveNode] = useState<string | null>(null);
   const [inputFocused, setInputFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { t } = useI18n();
 
   const handleCtaClick = () => {
     onExploreProjects();
@@ -127,7 +129,7 @@ export const HeroFuturistic: React.FC<HeroFuturisticProps> = ({
           transition={{ delay: 0.1, duration: 0.5 }}
           className="font-mono text-xs tracking-[0.4em] text-ink-lo uppercase"
         >
-          // ENGENHARIA DE SISTEMAS
+          {t('hero.label')}
         </motion.p>
 
         {/* Line 1: Angular display font */}
@@ -137,7 +139,7 @@ export const HeroFuturistic: React.FC<HeroFuturisticProps> = ({
           transition={{ delay: 0.2, duration: 0.6 }}
           className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold text-ink-hi tracking-tight leading-none"
         >
-          CONSTRUINDO INFRAESTRUTURA
+          {t('hero.title1')}
         </motion.h1>
 
         {/* Line 2: Display font */}
@@ -147,7 +149,7 @@ export const HeroFuturistic: React.FC<HeroFuturisticProps> = ({
           transition={{ delay: 0.3, duration: 0.6 }}
           className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold text-ink-hi tracking-tight leading-none"
         >
-          ESCALÁVEL &amp; RESILIENTE
+          {t('hero.title2')}
         </motion.h1>
 
         {/* Line 3: Dynamic multi-layered gradient (tri) */}
@@ -157,7 +159,7 @@ export const HeroFuturistic: React.FC<HeroFuturisticProps> = ({
           transition={{ delay: 0.4, duration: 0.6 }}
           className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-grad-tri tracking-tight leading-snug"
         >
-          CLEAN ARCHITECTURE &amp; MICROSERVIÇOS RESILIENTES
+          {t('hero.subtitle')}
         </motion.div>
 
         {/* Sub-headline */}
@@ -167,8 +169,7 @@ export const HeroFuturistic: React.FC<HeroFuturisticProps> = ({
           transition={{ delay: 0.55, duration: 0.5 }}
           className="font-body text-base sm:text-lg text-ink-mid max-w-3xl mx-auto leading-relaxed mt-4"
         >
-          Portfólio de <strong className="text-ink-hi">{profile.name}</strong> — backends de alta performance
-          com Node.js &amp; TypeScript, padrões SOLID rigorosos e tolerância a falhas by design.
+          {t('hero.desc1')}<strong className="text-ink-hi">{profile.name}</strong>{t('hero.desc2')}
         </motion.p>
       </div>
 
