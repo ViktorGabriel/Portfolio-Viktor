@@ -8,6 +8,7 @@ import { ArchitectureVisualizer } from './components/architecture/ArchitectureVi
 import { TerminalIntro } from './components/landing/TerminalIntro';
 import { BlueprintPanel } from './components/showcase/BlueprintPanel';
 import { ProjectModal } from './components/showcase/ProjectModal';
+import { TechnicalDossier } from './components/about/TechnicalDossier';
 import { usePortfolioData } from './hooks/usePortfolioData';
 import { Project } from '@portfolio/shared';
 import { Filter, Github, Radio, MapPin, Building, Mail } from 'lucide-react';
@@ -60,6 +61,12 @@ export const App: React.FC = () => {
 
         {/* Live System Status KPIs */}
         <SystemStatusPanel isCached={data.isCached} totalProjects={data.pinnedProjects.length} />
+
+        {/* ── ABOUT: Technical Dossier ─────────────────────────── */}
+        <TechnicalDossier
+          avatarUrl={data.profile.avatarUrl}
+          name={data.profile.name}
+        />
 
         {/* Architecture Visualizer */}
         <div id="architecture">

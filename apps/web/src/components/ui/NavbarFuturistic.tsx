@@ -24,6 +24,7 @@ const VGLogomark: React.FC = () => (
 );
 
 const NAV_ITEMS = [
+  { id: 'about',        label: 'DOSSIER',      Icon: Cpu,        color: 'text-teal-400' },
   { id: 'telemetry',    label: 'TELEMETRIA',    Icon: BarChart2,  color: 'text-cyan-DEFAULT' },
   { id: 'architecture', label: 'ARQUITETURA',   Icon: Layers,     color: 'text-magenta-DEFAULT' },
   { id: 'showcase',     label: 'BLUEPRINTS',    Icon: Cpu,        color: 'text-gold-DEFAULT' },
