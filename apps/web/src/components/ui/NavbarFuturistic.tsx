@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Cpu, Layers, BarChart2, Terminal, Github, Radio } from 'lucide-react';
+import { useI18n } from '../../locales/i18n';
 
 interface NavbarProps {
   isCached?: boolean;
@@ -9,30 +10,49 @@ interface NavbarProps {
 // Abstracted VG geometric logomark rendered in SVG
 const VGLogomark: React.FC = () => (
   <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="38" height="38" rx="6" fill="#050505" stroke="rgba(0,255,255,0.35)" strokeWidth="1" />
-    {/* V shape */}
-    <polyline points="6,8 12,28 19,14" stroke="#00FFFF" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-    <polyline points="19,14 26,28 32,8" stroke="#00FFFF" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-    {/* G arc */}
-    <path d="M26,19 L31,19 L31,24 A6 6 0 1 1 19 19" stroke="#FF00FF" strokeWidth="1.4" strokeLinecap="round" fill="none"/>
-    {/* Corner ticks */}
-    <line x1="2" y1="2" x2="6" y2="2" stroke="#FFD700" strokeWidth="1"/>
-    <line x1="2" y1="2" x2="2" y2="6" stroke="#FFD700" strokeWidth="1"/>
-    <line x1="32" y1="36" x2="36" y2="36" stroke="#FFD700" strokeWidth="1"/>
-    <line x1="36" y1="32" x2="36" y2="36" stroke="#FFD700" strokeWidth="1"/>
+    {/* Tech container with micro-border */}
+    <rect width="38" height="38" rx="6" fill="#050505" stroke="rgba(0,255,255,0.3)" strokeWidth="1" />
+    
+    {/* Subtle technical background grid line */}
+    <line x1="19" y1="6" x2="19" y2="32" stroke="rgba(255,255,255,0.06)" strokeWidth="1" strokeDasharray="2 2" />
+    
+    {/* Sharp, clean 'V' on left (Electric Cyan) */}
+    <path
+      d="M7 11 L13.5 27 L18.5 11"
+      stroke="#00FFFF"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+
+    {/* Technical, angular 'G' on right (Vibrant Magenta) */}
+    <path
+      d="M31 15.5 C31 11.5 28.5 10 24.5 10 C20 10 18 13.5 18 19 C18 24.5 20.5 28 25 28 C29 28 31 25.5 31 21.5 L24.5 21.5"
+      stroke="#FF00FF"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+
+    {/* Micro-tech corner accents (Gold) */}
+    <line x1="3" y1="3" x2="6" y2="3" stroke="#FFD700" strokeWidth="1.2" strokeLinecap="round" />
+    <line x1="3" y1="3" x2="3" y2="6" stroke="#FFD700" strokeWidth="1.2" strokeLinecap="round" />
+    <line x1="35" y1="35" x2="32" y2="35" stroke="#FFD700" strokeWidth="1.2" strokeLinecap="round" />
+    <line x1="35" y1="35" x2="35" y2="32" stroke="#FFD700" strokeWidth="1.2" strokeLinecap="round" />
   </svg>
 );
 
 const NAV_ITEMS = [
-  { id: 'about',        label: 'DOSSIER',      Icon: Cpu,        color: 'text-teal-400' },
-  { id: 'telemetry',    label: 'TELEMETRIA',    Icon: BarChart2,  color: 'text-cyan-DEFAULT' },
-  { id: 'architecture', label: 'ARQUITETURA',   Icon: Layers,     color: 'text-magenta-DEFAULT' },
-  { id: 'showcase',     label: 'BLUEPRINTS',    Icon: Cpu,        color: 'text-gold-DEFAULT' },
-  { id: 'terminal',     label: 'CLI',           Icon: Terminal,   color: 'text-cyan-dim' },
+  { id: 'about',        labelKey: 'nav.dossier',      Icon: Cpu,        color: 'text-teal-400' },
+  { id: 'telemetry',    labelKey: 'nav.telemetry',    Icon: BarChart2,  color: 'text-cyan-DEFAULT' },
+  { id: 'architecture', labelKey: 'nav.architecture',   Icon: Layers,     color: 'text-magenta-DEFAULT' },
+  { id: 'showcase',     labelKey: 'nav.blueprints',    Icon: Cpu,        color: 'text-gold-DEFAULT' },
+  { id: 'terminal',     labelKey: 'nav.cli',           Icon: Terminal,   color: 'text-cyan-dim' },
 ];
 
 export const NavbarFuturistic: React.FC<NavbarProps> = ({ isCached, onNavigate }) => {
   const [hovered, setHovered] = useState<string | null>(null);
+  const { t, language, setLanguage } = useI18n();
 
   return (
     <header className="sticky top-0 z-50 w-full">
@@ -52,14 +72,14 @@ export const NavbarFuturistic: React.FC<NavbarProps> = ({ isCached, onNavigate }
                 VIKTOR GABRIEL
               </span>
               <span className="font-body text-[9px] tracking-[0.35em] text-ink-lo uppercase mt-0.5">
-                Software Engineer
+                {t('nav.role')}
               </span>
             </div>
           </button>
 
           {/* Navigation: micro-icon items with status-update hover */}
           <nav className="hidden md:flex items-center space-x-1">
-            {NAV_ITEMS.map(({ id, label, Icon }) => {
+            {NAV_ITEMS.map(({ id, labelKey, Icon }) => {
               const isHov = hovered === id;
               return (
                 <button
@@ -78,7 +98,7 @@ export const NavbarFuturistic: React.FC<NavbarProps> = ({ isCached, onNavigate }
                     <span className="absolute top-1 right-1 w-1 h-1 rounded-full bg-[#00FFFF] blink" />
                   )}
                   <Icon className={`w-3 h-3 ${isHov ? 'text-[#00FFFF]' : 'text-ink-lo'}`} />
-                  <span>{label}</span>
+                  <span>{t(labelKey)}</span>
                 </button>
               );
             })}
@@ -93,13 +113,13 @@ export const NavbarFuturistic: React.FC<NavbarProps> = ({ isCached, onNavigate }
                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#00FFFF]" />
               </span>
               <span className="text-[#00FFFF] font-bold">{isCached ? '<1.8ms' : 'live'}</span>
-              <span className="text-ink-lo">BFF</span>
+              <span className="text-ink-lo">{t('nav.bff')}</span>
             </div>
 
             {/* Radio / system online */}
             <div className="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 rounded bg-[#0d1117] border border-[#FF00FF1a] text-[10px] font-mono text-[#FF00FF]">
               <Radio className="w-3 h-3 animate-pulse-slow" />
-              <span>ONLINE</span>
+              <span>{t('nav.online')}</span>
             </div>
 
             <a
@@ -111,14 +131,30 @@ export const NavbarFuturistic: React.FC<NavbarProps> = ({ isCached, onNavigate }
               <Github className="w-4 h-4" />
             </a>
 
+            {/* Language Switcher */}
+            <div className="flex items-center space-x-1 font-mono text-[10px]">
+              <button
+                onClick={() => setLanguage('pt-BR')}
+                className={`px-1.5 py-0.5 rounded transition-colors ${language === 'pt-BR' ? 'bg-zinc-800 text-white' : 'text-zinc-500 hover:text-white'}`}
+              >
+                PT
+              </button>
+              <button
+                onClick={() => setLanguage('en-US')}
+                className={`px-1.5 py-0.5 rounded transition-colors ${language === 'en-US' ? 'bg-zinc-800 text-white' : 'text-zinc-500 hover:text-white'}`}
+              >
+                EN
+              </button>
+            </div>
+
             <button
               onClick={() => onNavigate('contact')}
               className="relative overflow-hidden px-4 py-2 rounded text-xs font-mono font-bold tracking-widest text-black bg-[#00FFFF] hover:bg-[#00FFFF] transition group clip-corner"
               style={{ boxShadow: '0 0 20px rgba(0,255,255,0.5)' }}
             >
-              <span className="relative z-10">CONTATO</span>
+              <span className="relative z-10">{t('nav.contact')}</span>
               <span className="absolute inset-0 bg-gradient-to-r from-[#00FFFF] to-[#00c8c8] group-hover:from-[#00FFFF] group-hover:to-[#FF00FF] transition-all duration-500" />
-              <span className="absolute inset-0 z-10 flex items-center justify-center font-mono font-bold text-xs tracking-widest text-black">CONTATO</span>
+              <span className="absolute inset-0 z-10 flex items-center justify-center font-mono font-bold text-xs tracking-widest text-black">{t('nav.contact')}</span>
             </button>
           </div>
         </div>
