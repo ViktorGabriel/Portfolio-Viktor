@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log
+.git
+.gitignore
+.env
+apps/web
+dist
+apps/api/dist
+packages/shared/dist
