@@ -6,7 +6,7 @@ const FALLBACK_DATA: PortfolioOverviewResponse = {
     username: 'ViktorGabriel',
     name: 'Viktor Gabriel',
     bio: 'Software Engineer com foco em Clean Architecture, SOLID, Node.js, TypeScript e React. Construindo sistemas escaláveis e resilientes.',
-    avatarUrl: 'https://avatars.githubusercontent.com/u/10000000?v=4',
+    avatarUrl: 'https://avatars.githubusercontent.com/u/161162809?v=4',
     githubUrl: 'https://github.com/ViktorGabriel',
     location: 'Brasil',
     company: 'Open to Work / Freelance',
@@ -164,7 +164,11 @@ export function usePortfolioData() {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 5000);
 
-      const res = await fetch('http://localhost:3333/api/portfolio/overview', {
+      const apiUrl = import.meta.env.VITE_API_URL 
+        ? `${import.meta.env.VITE_API_URL.replace(/\/$/, '')}/api/portfolio/overview`
+        : 'http://localhost:3333/api/portfolio/overview';
+
+      const res = await fetch(apiUrl, {
         signal: controller.signal
       });
       clearTimeout(timeoutId);
