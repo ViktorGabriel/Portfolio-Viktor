@@ -10,7 +10,9 @@
     "dev": "concurrently \"npm run dev -w @portfolio/api\" \"npm run dev -w @portfolio/web\"",
     "dev:api": "npm run dev -w @portfolio/api",
     "dev:web": "npm run dev -w @portfolio/web",
-    "build": "npm run build -w @portfolio/shared && npm run build -w @portfolio/api && npm run build -w @portfolio/web"
+    "build": "npm run build -w @portfolio/shared && npm run build -w @portfolio/api && npm run build -w @portfolio/web",
+    "build:api": "npm run build -w @portfolio/shared && npm run build -w @portfolio/api",
+    "start:api": "npm run start -w @portfolio/api"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
