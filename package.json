@@ -12,6 +12,7 @@
     "dev:web": "npm run dev -w @portfolio/web",
     "build": "npm run build -w @portfolio/shared && npm run build -w @portfolio/api && npm run build -w @portfolio/web",
     "build:api": "npm run build -w @portfolio/shared && npm run build -w @portfolio/api",
+    "build:web": "npm run build -w @portfolio/shared && npm run build -w @portfolio/web",
     "start:api": "npm run start -w @portfolio/api"
   },
   "devDependencies": {
