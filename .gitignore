@@ -28,6 +28,7 @@ pnpm-debug.log*
 Thumbs.db
 
 # Editor directories
+.vscode/
 .idea/
 *.suo
 *.ntvs*
@@ -37,3 +38,10 @@ Thumbs.db
 *.tsbuildinfo
 *.buildinfo
 write-file-helper.cjs
+
+# AI Agent files and instructions
+.agents/
+.agent/
+.claude/
+CLAUDE.md
+AGENTS.md
